@@ -470,10 +470,7 @@ export default function App() {
           <h2 style={{ fontSize: "clamp(24px,3.5vw,36px)", fontWeight: 700, marginBottom: 12, color: "#f1f5f9" }}>まずは、気軽に相談してください。</h2>
           <p style={{ fontSize: 14, color: "rgba(241,245,249,0.55)", marginBottom: 8, lineHeight: 1.9 }}>「こんな動画作れる？」「料金の相談がしたい」</p>
           <p style={{ fontSize: 14, color: "rgba(241,245,249,0.55)", marginBottom: 36 }}>どんな小さなご質問でも大歓迎です。動画制作を通してビジネスの発信をサポートします。</p>
-          <button style={{ padding: "15px 36px", borderRadius: 8, background: "#2563eb", border: "none", color: "#fff", fontSize: 14, fontWeight: 600, cursor: "pointer", boxShadow: "0 4px 24px rgba(37,99,235,0.45)" }}>
-            w.k.dsya@gmail.com
-          </button>
-        </Section>
+<a href="mailto:w.k.dsya@gmail.com" style={{ padding: "15px 36px", borderRadius: 8, background: "#2563eb", border: "none", color: "#fff", fontSize: 14, fontWeight: 600, cursor: "pointer", boxShadow: "0 4px 24px rgba(37,99,235,0.45)", textDecoration: "none", display: "inline-block" }}>w.k.dsya@gmail.com</a>        </Section>
       </section>
 
       {/* Footer */}
@@ -482,7 +479,6 @@ export default function App() {
         <p style={{ margin: 0, fontSize: 11, color: "rgba(241,245,249,0.25)" }}>© 2025 Bloomy. All rights reserved.</p>
       </footer>
 
-      <ChatBot />
     </div>
   );
 }
