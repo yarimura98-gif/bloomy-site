@@ -244,7 +244,9 @@ export default function App() {
           </div>
           <div style={{ display: "flex", gap: 12 }}>
 <a href="#お問い合わせ" style={{ padding: "13px 28px", borderRadius: 8, background: "#2563eb", border: "none", color: "#fff", fontSize: 14, fontWeight: 600, cursor: "pointer", boxShadow: "0 4px 20px rgba(37,99,235,0.4)", textDecoration: "none", display: "inline-block" }}>お問い合わせ</a>
-<a href="#料金" style={{ padding: "13px 28px", borderRadius: 8, background: "transparent", border: "1px solid rgba(37,99,235,0.4)", color: "#93c5fd", fontSize: 14, fontWeight: 600, cursor: "pointer", textDecoration: "none", display: "inline-block" }}>料金を見る</a>          <TimelineAnimation />
+<a href="#料金" style={{ padding: "13px 28px", borderRadius: 8, background: "transparent", border: "1px solid rgba(37,99,235,0.4)", color: "#93c5fd", fontSize: 14, fontWeight: 600, cursor: "pointer", textDecoration: "none", display: "inline-block" }}>料金を見る</a>         
+        </div>
+        <TimelineAnimation /> 
         </div>
       </section>
 
