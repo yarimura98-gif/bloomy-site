@@ -333,7 +333,7 @@ export default function App() {
                     </div>
                   ))}
                 </div>
-              </div>s
+              </div>
             </Section>
 
             {/* Length options */}
