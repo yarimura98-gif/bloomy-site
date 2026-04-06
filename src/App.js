@@ -1,22 +1,8 @@
+
+
 import { useState, useEffect, useRef } from "react";
-
-const COMPANY_INFO = `
-Bloomyは動画編集・グラフィックデザインを専門とするクリエイティブスタジオです。
-代表クリエイター: 吉村愛理沙（動画クリエイター）
-使用ツール: Adobe Premiere Pro, Adobe After Effects, CapCut, Canva, 生成AI
-メインサービス: ビジネス動画編集（YouTube・SNS・オンライン講座・セミナー動画など）
-サブサービス: 簡易グラフィックデザイン（サムネイル・バナーなど）
-基本編集プラン: 5分以内 35,000円（カット編集・フルテロップ・色調補正・BGM挿入など、修正2回無料）
-縦動画・リール編集: 1分以内6,000円、2分以内8,000円、3分以内10,000円、4分〜15,000円
-動画尺オプション: 10〜15分+5,000円、15〜20分+10,000円、20〜25分+15,000円
-定期プラン: 月3本（5分動画）100,000円/月
-主な追加オプション: サムネイル制作+5,000円、ショート動画切り抜き+3,000円〜、テロップ演出強化+5,000円、特急納品+5,000円など
-制作の流れ: 相談→素材共有→編集→初稿提出（修正2回無料）→最終納品（MP4高画質）
-会社名: Bloomy（ブルーミー）— 才能の開花・人が集まる場所という意味の造語
-理念: 才能が、ここで咲く。クリエイターが芽吹く・チームで成長・才能が広がる
-お問い合わせ: w.k.dsya@gmail.com
-`;
-
+import { Link } from "react-router-dom";
+ 
 const tools = [
   { name: "Premiere Pro", short: "Pr", color: "#9999FF" },
   { name: "After Effects", short: "Ae", color: "#9999FF" },
@@ -24,7 +10,7 @@ const tools = [
   { name: "Canva", short: "Cv", color: "#00C4CC" },
   { name: "生成AI", short: "AI", color: "#10a37f" },
 ];
-
+ 
 const services = [
   {
     icon: "▶", title: "動画編集", main: true,
@@ -35,13 +21,13 @@ const services = [
     items: ["YouTube サムネイル", "SNS バナー・投稿画像", "簡易ロゴ・アイコン"],
   },
 ];
-
+ 
 const works = [
   { label: "ビジネス動画", tag: "Business", accent: "#2563eb", desc: "商品・サービスの魅力を動画で伝える" },
   { label: "企業PR", tag: "PR", accent: "#1d4ed8", desc: "会社の想いをストーリーで届ける" },
   { label: "イベントオープニング", tag: "Event", accent: "#7c3aed", desc: "会場を盛り上げるオープニング映像" },
 ];
-
+ 
 const flow = [
   { num: "01", title: "ご相談・ヒアリング", desc: "動画の用途やイメージをお伺いします。「こんな動画作れる？」などお気軽にどうぞ。", icon: "💬" },
   { num: "02", title: "素材データ共有", desc: "動画素材・画像・参考動画などをご共有いただきます。", icon: "📁" },
@@ -49,7 +35,7 @@ const flow = [
   { num: "04", title: "初稿提出・修正対応", desc: "ご確認いただき修正対応いたします。修正2回まで無料です。", icon: "✏️" },
   { num: "05", title: "最終納品", desc: "MP4形式にて高画質で納品いたします。", icon: "✅" },
 ];
-
+ 
 const options = [
   { label: "サムネイル制作", price: "+5,000円" },
   { label: "ショート動画切り抜き 1本", price: "+3,000円" },
@@ -63,7 +49,7 @@ const options = [
   { label: "秘密保持契約書作成", price: "+5,000円" },
   { label: "修正追加（3回目以降）", price: "+2,000円 / 回" },
 ];
-
+ 
 function useInView(threshold = 0.12) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
@@ -74,7 +60,7 @@ function useInView(threshold = 0.12) {
   }, []); // eslint-disable-line
   return [ref, inView];
 }
-
+ 
 function Section({ children, style, delay = 0 }) {
   const [ref, inView] = useInView();
   return (
@@ -83,7 +69,7 @@ function Section({ children, style, delay = 0 }) {
     </div>
   );
 }
-
+ 
 function TimelineAnimation() {
   const tracks = [
     { label: "VIDEO", color: "#2563eb", clips: [{ x: 0, w: 38 }, { x: 42, w: 28 }, { x: 74, w: 22 }] },
@@ -141,7 +127,7 @@ function TimelineAnimation() {
     </div>
   );
 }
-
+ 
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [openOption, setOpenOption] = useState(false);
@@ -149,12 +135,12 @@ export default function App() {
     const h = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", h); return () => window.removeEventListener("scroll", h);
   }, []);
-
+ 
   const nav = ["サービス","料金","制作の流れ","実績","私たちについて","お問い合わせ"];
-
+ 
   return (
     <div translate="no" style={{ fontFamily: "'Helvetica Neue', Arial, sans-serif", background: "#070d1a", color: "#f1f5f9", minHeight: "100vh", overflowX: "hidden" }}>
-
+ 
       {/* Nav */}
       <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, padding: "0 40px", height: 58, display: "flex", alignItems: "center", justifyContent: "space-between", background: scrolled ? "rgba(7,13,26,0.96)" : "transparent", backdropFilter: scrolled ? "blur(14px)" : "none", borderBottom: scrolled ? "1px solid rgba(37,99,235,0.15)" : "none", transition: "all 0.3s ease" }}>
         <div style={{ fontSize: 18, fontWeight: 700, color: "#f1f5f9", letterSpacing: 1 }}><span style={{ color: "#2563eb" }}>B</span>loomy</div>
@@ -165,7 +151,7 @@ export default function App() {
           ))}
         </div>
       </nav>
-
+ 
       {/* Hero */}
       <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", padding: "100px 40px 60px", maxWidth: 1100, margin: "0 auto", gap: 60, flexWrap: "wrap" }}>
         <div style={{ flex: 1, minWidth: 280, animation: "fadeUp 0.9s ease forwards" }}>
@@ -198,7 +184,7 @@ export default function App() {
           <TimelineAnimation />
         </div>
       </section>
-
+ 
       {/* Services */}
       <section id="サービス" style={{ padding: "90px 40px", maxWidth: 1000, margin: "0 auto" }}>
         <Section>
@@ -238,7 +224,7 @@ export default function App() {
           </div>
         </Section>
       </section>
-
+ 
       {/* Pricing */}
       <section id="料金" style={{ padding: "90px 40px", background: "rgba(37,99,235,0.04)", borderTop: "1px solid rgba(37,99,235,0.1)", borderBottom: "1px solid rgba(37,99,235,0.1)" }}>
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
@@ -247,10 +233,9 @@ export default function App() {
             <h2 style={{ fontSize: "clamp(26px,3.5vw,38px)", fontWeight: 700, marginBottom: 10, color: "#f1f5f9" }}>料金プラン</h2>
             <p style={{ fontSize: 14, color: "rgba(241,245,249,0.5)", marginBottom: 40 }}>すべて税込表示。まずはお気軽にご相談ください。</p>
           </Section>
-
-          {/* Main plans */}
+ 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 20, marginBottom: 24 }}>
-
+ 
             {/* Basic */}
             <Section delay={0.05}>
               <div style={{ borderRadius: 14, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", padding: "28px 24px", position: "relative" }}>
@@ -267,7 +252,7 @@ export default function App() {
                 </div>
               </div>
             </Section>
-
+ 
             {/* Monthly */}
             <Section delay={0.1}>
               <div style={{ borderRadius: 14, background: "rgba(37,99,235,0.1)", border: "2px solid rgba(37,99,235,0.4)", padding: "28px 24px", position: "relative" }}>
@@ -285,7 +270,7 @@ export default function App() {
                 </div>
               </div>
             </Section>
-
+ 
             {/* Reel */}
             <Section delay={0.12}>
               <div style={{ borderRadius: 14, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", padding: "28px 24px" }}>
@@ -302,7 +287,7 @@ export default function App() {
                 <div style={{ marginTop: 16, padding: "8px 12px", borderRadius: 6, background: "rgba(37,99,235,0.15)", fontSize: 12, color: "#93c5fd" }}>カット編集・フルテロップ・色調調整・音量調整・BGM/SE挿入込み</div>
               </div>
             </Section>
-
+ 
             {/* Length options */}
             <Section delay={0.15}>
               <div style={{ borderRadius: 14, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", padding: "28px 24px" }}>
@@ -318,9 +303,9 @@ export default function App() {
                 </div>
               </div>
             </Section>
-
+ 
           </div>
-
+ 
           {/* Options accordion */}
           <Section delay={0.2}>
             <div style={{ borderRadius: 12, border: "1px solid rgba(255,255,255,0.08)", overflow: "hidden" }}>
@@ -342,7 +327,7 @@ export default function App() {
           </Section>
         </div>
       </section>
-
+ 
       {/* Flow */}
       <section id="制作の流れ" style={{ padding: "90px 40px", maxWidth: 1000, margin: "0 auto" }}>
         <Section>
@@ -370,18 +355,19 @@ export default function App() {
           ))}
         </div>
       </section>
-
+ 
       {/* Works */}
       <section id="実績" style={{ padding: "80px 40px", background: "rgba(37,99,235,0.04)", borderTop: "1px solid rgba(37,99,235,0.1)", borderBottom: "1px solid rgba(37,99,235,0.1)" }}>
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
           <Section>
             <p style={{ fontSize: 11, letterSpacing: 4, color: "#2563eb", textTransform: "uppercase", marginBottom: 10 }}>Works</p>
-            <h2 style={{ fontSize: "clamp(26px,3.5vw,38px)", fontWeight: 700, marginBottom: 40, color: "#f1f5f9" }}>制作実績</h2>
+            <h2 style={{ fontSize: "clamp(26px,3.5vw,38px)", fontWeight: 700, marginBottom: 16, color: "#f1f5f9" }}>制作実績</h2>
+            <p style={{ fontSize: 14, color: "rgba(241,245,249,0.5)", marginBottom: 32 }}>クリックしてポートフォリオを見る</p>
           </Section>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: 14 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: 14, marginBottom: 40 }}>
             {works.map((w, i) => (
               <Section key={i} delay={i * 0.07}>
-                <div style={{ borderRadius: 10, overflow: "hidden", cursor: "pointer", transition: "transform 0.25s" }}
+                <Link to="/portfolio" style={{ textDecoration: "none", display: "block", borderRadius: 10, overflow: "hidden", cursor: "pointer", transition: "transform 0.25s" }}
                   onMouseEnter={e => e.currentTarget.style.transform = "translateY(-4px)"}
                   onMouseLeave={e => e.currentTarget.style.transform = "translateY(0)"}>
                   <div style={{ height: 140, background: `linear-gradient(135deg, ${w.accent}22, ${w.accent}55)`, display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
@@ -392,13 +378,24 @@ export default function App() {
                     <p style={{ margin: "0 0 4px", fontSize: 13, fontWeight: 600, color: "#e2e8f0" }}>{w.label}</p>
                     <p style={{ margin: 0, fontSize: 11, color: "rgba(241,245,249,0.4)" }}>{w.desc}</p>
                   </div>
-                </div>
+                </Link>
               </Section>
             ))}
           </div>
+ 
+          {/* ポートフォリオボタン */}
+          <Section delay={0.3}>
+            <div style={{ textAlign: "center" }}>
+              <Link to="/portfolio" style={{ padding: "13px 36px", borderRadius: 8, background: "transparent", border: "1px solid rgba(37,99,235,0.5)", color: "#93c5fd", fontSize: 14, fontWeight: 600, cursor: "pointer", textDecoration: "none", display: "inline-block" }}
+                onMouseEnter={e => { e.currentTarget.style.background = "rgba(37,99,235,0.15)"; }}
+                onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}>
+                ポートフォリオをすべて見る →
+              </Link>
+            </div>
+          </Section>
         </div>
       </section>
-
+ 
       {/* About */}
       <section id="私たちについて" style={{ padding: "90px 40px", maxWidth: 1000, margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 60, alignItems: "center" }}>
@@ -429,7 +426,7 @@ export default function App() {
           </Section>
         </div>
       </section>
-
+ 
       {/* CTA */}
       <section id="お問い合わせ" style={{ padding: "80px 40px", textAlign: "center", background: "rgba(37,99,235,0.06)", borderTop: "1px solid rgba(37,99,235,0.12)" }}>
         <Section>
@@ -441,13 +438,14 @@ export default function App() {
           </a>
         </Section>
       </section>
-
+ 
       {/* Footer */}
       <footer style={{ padding: "22px 40px", borderTop: "1px solid rgba(255,255,255,0.06)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <p style={{ margin: 0, fontSize: 14, fontWeight: 700, color: "rgba(241,245,249,0.4)" }}><span style={{ color: "#2563eb" }}>B</span>loomy</p>
         <p style={{ margin: 0, fontSize: 11, color: "rgba(241,245,249,0.25)" }}>© 2025 Bloomy. All rights reserved.</p>
       </footer>
-
+ 
     </div>
   );
 }
+ 
